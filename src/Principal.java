@@ -13,21 +13,27 @@
  */
 public class Principal {
 
+    /**
+     * Fibonacci recursivo
+     *
+     * @param n Quantidade de termos a ser calculada
+     * @return O termo da posição
+     */
     public static int fibonacciRecursivo(int n) {
         if (n <= 1) {
             return n;
         } else {
-            //System.out.println("fibo("+(n-1)+")");
             int a = fibonacciRecursivo(n - 1);
-            //System.out.println("fibo("+(n-2)+")");
             int b = fibonacciRecursivo(n - 2);
             return (a + b);
         }
     }
 
     /**
-     * Fibonaci com programação dinâmica.
-     * Com tabela para armazenar resultados
+     * Fibonaci com programação dinâmica. Com tabela para armazenar resultados
+     *
+     * @param n Quantidade de termos a ser calculada
+     * @return O termo da posição
      */
     public static int fibonacci(int n) {
         int f[] = new int[n + 1];
@@ -40,10 +46,12 @@ public class Principal {
     }
 
     /**
-     * Fibonaci com programação dinâmica.
-     * Com economia de espaço
+     * Fibonaci com programação dinâmica. Com economia de espaço
+     *
+     * @param n Quantidade de termos a ser calculada
+     * @return O termo da posição
      */
-    public static int fibonacci3(int n) {
+    public static int fibonacci1(int n) {
         if (n == 0) {
             return 0;
         } else {
@@ -59,9 +67,11 @@ public class Principal {
     }
 
     /**
-     * Fibonaci com programação dinâmica.
-     * Versão recursiva eficiente
-     * Não recalcula os valores de f
+     * Fibonaci com programação dinâmica. Versão recursiva eficiente. Não
+     * recalcula os valores de f
+     *
+     * @param n Quantidade de termos a ser calculada
+     * @return O termo da posição
      */
     public static int memoizeFibo(int n) {
         int f[] = new int[n + 1];
@@ -71,6 +81,14 @@ public class Principal {
         return lookupFibo(f, n - 1);
     }
 
+    /**
+     * Fibonaci com programação dinâmica. Versão recursiva eficiente. Não
+     * recalcula os valores de f
+     *
+     * @param f Tabela dos valores
+     * @param n Quantidade de termos a ser calculada
+     * @return O termo da posição
+     */
     public static int lookupFibo(int f[], int n) {
         if (f[n] >= 0) {
             return f[n];
@@ -88,8 +106,11 @@ public class Principal {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        System.out.println("Fibonacci:" + memoizeFibo(5));
+
+        System.out.println("Fibonacci Recursivo:" + fibonacciRecursivo(5));
+        System.out.println("Fibonacci dinânico com tabela:" + fibonacci(5));
+        System.out.println("Fibonacci dinânico com economia:" + fibonacci1(5));
+        System.out.println("Fibonacci dinâmico recursivo:" + memoizeFibo(5));
     }
 
 }
